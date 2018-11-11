@@ -9,7 +9,7 @@ https://securityonion.net/wiki/elastic
 
 
 Minumum list of logstash pipeline files
-0007_input_import.conf
+0097_input_bro_s3.conf
 1003_preprocess_bro.conf
 1100_preprocess_bro_conn.conf
 1102_preprocess_bro_dns.conf
