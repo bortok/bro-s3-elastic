@@ -8,14 +8,30 @@ For more information, please see the Elastic pages on our Wiki:
 https://securityonion.net/wiki/elastic
 
 
-Minumum list of logstash pipeline files
-0097_input_bro_s3.conf
-1003_preprocess_bro.conf
-1100_preprocess_bro_conn.conf
-1102_preprocess_bro_dns.conf
-6000_bro.conf
-6001_bro_import.conf
-8000_postprocess_bro_cleanup.conf
-8006_postprocess_dns.conf
-9000_output_bro.conf
-9002_output_import.conf
+Logstash initialization requirements
+/etc/default/logstash
+
+```shell
+LS_PIPELINE_BRO_S3_ACCESS_KEY_ID=""
+LS_PIPELINE_BRO_S3_SECRET_ACCESS_KEY=""
+LS_PIPELINE_BRO_S3_BUCKET=""
+LS_PIPELINE_BACKUP_S3_BUCKET=""
+LS_PIPELINE_BRO_S3_REGION=""
+LS_PIPELINE_BRO_S3_PREFIX=""
+LS_PIPELINE_BACKUP_ADD_S3_PREFIX=""
+
+LS_PIPELINE_BRO_ELASTIC_HOST=""
+LS_PIPELINE_BRO_ELASTIC_USER=""
+LS_PIPELINE_BRO_ELASTIC_PASSWORD=""
+```
+
+/etc/systemd/system/logstash.service
+```shell
+ExecStart=/bin/bash -c 'LS_PIPELINE_BRO_S3_PREFIX_DATE=`/etc/logstash/s3-prefix-date.sh` exec /usr/share/logstash/bin/logstash "--path.settings" "/etc/logstash"'
+```
+
+/etc/logstash/s3-prefix-date.sh
+```shell
+#!/bin/bash
+TZ="America/Los_Angeles" date "+%Y-%m-%d" --date="yesterday"
+```
