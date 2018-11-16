@@ -15,10 +15,10 @@ Logstash initialization requirements
 LS_PIPELINE_BRO_S3_ACCESS_KEY_ID=""
 LS_PIPELINE_BRO_S3_SECRET_ACCESS_KEY=""
 LS_PIPELINE_BRO_S3_BUCKET=""
-LS_PIPELINE_BACKUP_S3_BUCKET=""
 LS_PIPELINE_BRO_S3_REGION=""
 LS_PIPELINE_BRO_S3_PREFIX=""
-LS_PIPELINE_BACKUP_ADD_S3_PREFIX=""
+LS_PIPELINE_BACKUP_S3_BUCKET=""
+LS_PIPELINE_BACKUP_ADD_S3_PREFIX="processed/"
 
 LS_PIPELINE_BRO_ELASTIC_HOST=""
 LS_PIPELINE_BRO_ELASTIC_USER=""
@@ -30,8 +30,4 @@ LS_PIPELINE_BRO_ELASTIC_PASSWORD=""
 ExecStart=/bin/bash -c 'LS_PIPELINE_BRO_S3_PREFIX_DATE=`/etc/logstash/s3-prefix-date.sh` exec /usr/share/logstash/bin/logstash "--path.settings" "/etc/logstash"'
 ```
 
-/etc/logstash/s3-prefix-date.sh
-```shell
-#!/bin/bash
-TZ="America/Los_Angeles" date "+%Y-%m-%d" --date="yesterday"
-```
+/etc/logstash/s3-prefix-date.sh - as is
