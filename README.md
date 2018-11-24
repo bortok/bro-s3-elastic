@@ -31,3 +31,13 @@ ExecStart=/bin/bash -c 'LS_PIPELINE_BRO_S3_PREFIX_DATE=`/etc/logstash/s3-prefix-
 ```
 
 /etc/logstash/s3-prefix-date.sh - as is
+
+
+Install rvm
+gem install bundler
+
+cd ~/bro-s3-elastic
+bundle install
+cd bro-s3-pipeline
+mustache 0097_input_bro_s3.yaml 0097_input_bro_s3.template > 0097_input_bro_s3.conf
+
