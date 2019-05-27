@@ -28,3 +28,11 @@ cd ~/bro-s3-elastic
 git fetch origin
 git checkout -b dynamic_pipeline_input
 git pull origin dynamic_pipeline_input
+cd
+cd ~/bro-s3-elastic
+
+# Install gems
+rvm install "ruby-2.4.1"
+cd
+cd ~/bro-s3-elastic
+bundle install
