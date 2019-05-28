@@ -1,0 +1,3 @@
+---
+bro_log_types: [ {type: conn}, {type: dns}, {type: http}, {type: ssl} ]
+---
