@@ -1,5 +1,4 @@
 #!/bin/bash
-sudo su - lsinit
 LS_PIPELINE_DIR=$HOME/bro-s3-elastic/bro-s3-pipeline
 
 cd $LS_PIPELINE_DIR
