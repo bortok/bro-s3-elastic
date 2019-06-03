@@ -1,0 +1,10 @@
+{
+  "size": 1,
+  "sort" : [ { "@timestamp" : "desc" } ],
+  "query": {
+    "query_string": {
+      "query": "ecs.version:* AND event.dataset:bro.dhcp AND dhcp.ip.assigned:%{[source_ip]}"
+    }
+  },
+  "_source": ["host.hostname"]
+}
